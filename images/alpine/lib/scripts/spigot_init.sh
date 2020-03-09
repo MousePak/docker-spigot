@@ -93,27 +93,35 @@ fi
 if [ -n "$ESSENTIALS" ]; then
   if [ "$ESSENTIALS" = "true" ]; then
     echo "Downloading Essentials..."
-    wget -O $SPIGOT_HOME/plugins/Essentials-2.x-SNAPSHOT.jar https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastStableBuild/artifact/Essentials/target/Essentials-2.x-SNAPSHOT.jar
+    wget -O /tmp/EssentialsX.zip https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/Essentials/target/*zip*/Essentials.zip
+    unzip /tmp/EssentialsX.zip -d $SPIGOT_HOME/plugins-source/
+    cp $SPIGOT_HOME/plugins-source/Essentials/target/*.jar $SPIGOT_HOME/plugins/
     if [ -n "$ESSENTIALSPROTECT" ]; then
       if [ "$ESSENTIALSPROTECT" = "true" ]; then
         echo "Downloading EssentialsProtect..."
-        wget -O $SPIGOT_HOME/plugins/EssentialsProtect-2.x-SNAPSHOT.jar https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastStableBuild/artifact/EssentialsProtect/target/EssentialsProtect-2.x-SNAPSHOT.jar
+        wget -O /tmp/EssentialsProtect.zip https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/EssentialsProtect/*zip*/EssentialsProtect.zip
+        unzip /tmp/EssentialsProtect.zip -d $SPIGOT_HOME/plugins-source/
+        cp $SPIGOT_HOME/plugins-source/EssentialsProtect/target/*.jar $SPIGOT_HOME/plugins/
       else
         echo "Removing EssentialsProtect..."
-        rm -f $SPIGOT_HOME/plugins/EssentialsProtect-2.x-SNAPSHOT.jar
+        rm -f $SPIGOT_HOME/plugins/EssentialsProtect*.jar
       fi
-      if [ -n "$ESSENTIALS_CREEPERBLOCKDMG" -a -f $SPIGOT_HOME/plugins/Essentials/config.yml ]; then
-        echo "Setting creeper block damage to $ESSENTIALS_CREEPERBLOCKDMG..."
-        sed -i "s/creeper-blockdamage: .*/creeper-blockdamage: $ESSENTIALS_CREEPERBLOCKDMG/" $SPIGOT_HOME/plugins/Essentials/config.yml
+    if [ -n "$ESSENTIALSCHAT" ]; then
+      if [ "$ESSENTIALSCHAT" = "true" ]; then
+        echo "Downloading EssentialsChat..."
+        wget -O /tmp/EssentialsChat.zip https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/EssentialsChat/*zip*/EssentialsChat.zip
+        unzip /tmp/EssentialsChat.zip -d $SPIGOT_HOME/plugins-source/
+        cp $SPIGOT_HOME/plugins-source/EssentialsChat/target/*.jar $SPIGOT_HOME/plugins/
+      else
+        echo "Removing EssentialsChat..."
+        rm -f $SPIGOT_HOME/plugins/EssentialsChat*.jar
       fi
     fi
   else
     echo "Removing Essentials..."
-    rm -f $SPIGOT_HOME/plugins/Essentials-2.x-SNAPSHOT.jar
-    rm -f $SPIGOT_HOME/plugins/EssentialsProtect-2.x-SNAPSHOT.jar
+    rm -f $SPIGOT_HOME/plugins/Essentials*.jar
   fi
 fi
-
 if [ -n "$CLEARLAG" ]; then
   if [ "$CLEARLAG" = "true" ]; then
     echo "Downloading ClearLag..."
@@ -123,14 +131,15 @@ if [ -n "$CLEARLAG" ]; then
     rm -f $SPIGOT_HOME/plugins/Clearlag.jar
   fi
 fi
-
-if [ -n "$PERMISSIONSEX" ]; then
-  if [ "$PERMISSIONSEX" = "true" ]; then
-    echo "Downloading PermissionsEx..."
-    wget -O $SPIGOT_HOME/plugins/PermissionsEx.jar https://dev.bukkit.org/projects/permissionsex/files/latest
+if [ -n "$PERMISSIONS" ]; then
+  if [ "$PERMISSIONS" = "true" ]; then
+    echo "Downloading LuckyPerms..."
+      wget -O /tmp/LuckyPerms.zip https://ci.lucko.me/job/LuckPerms/lastStableBuild/artifact/bukkit/build/libs/*zip*/libs.zip
+      unzip /tmp/LuckPerms.zip -d $SPIGOT_HOME/plugins-source/
+      cp $SPIGOT_HOME/plugins-source/LuckPerms/libs/*.jar $SPIGOT_HOME/plugins/
   else
-    echo "Removing PermissionsEx..."
-    rm -f $SPIGOT_HOME/plugins/PermissionsEx.jar
+    echo "Removing Permissions..."
+    rm -f $SPIGOT_HOME/plugins/LuckyPerms*.jar
   fi
 fi
 
