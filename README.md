@@ -1,16 +1,24 @@
 # Minecraft server SPIGOT
+Forked - ashdev/minecraft-spigot
+All credits where due
 
+Fork aimed at providing working options / plugins against minecraft 1.15.2
+(commeted out readme seactions to prevent confusion)
+
+```
 [![Docker Automated build](https://img.shields.io/docker/automated/ashdev/minecraft-spigot.svg)](https://hub.docker.com/r/ashdev/minecraft-spigot)
 [![Docker Stars](https://img.shields.io/docker/stars/ashdev/minecraft-spigot.svg)](https://hub.docker.com/r/ashdev/minecraft-spigot)
 [![Docker Pulls](https://img.shields.io/docker/pulls/ashdev/minecraft-spigot.svg)](https://hub.docker.com/r/ashdev/minecraft-spigot)
 [![Docker Build Status](https://img.shields.io/docker/build/ashdev/minecraft-spigot.svg)](https://hub.docker.com/r/ashdev/minecraft-spigot/builds)
 
 **This image replace the old image: [ashdev/docker-spigot](https://hub.docker.com/r/ashdev/docker-spigot)**
+```
 
 ## Minecraft 1.13 Update Aquatic
 
 This docker image is ready to use the latest version of Minecraft (1.13 Update Aquatic)
 
+```
 ### Available tags
 
 All available tags are always listed [in Docker Hub](https://hub.docker.com/r/ashdev/minecraft-spigot/tags):
@@ -19,6 +27,7 @@ All available tags are always listed [in Docker Hub](https://hub.docker.com/r/as
 - `1.13-alpine`, `alpine`: Latest server using Alpine for Minecraft 1.13.
 
 The plugins are using the latest version. In case of issue, disable them.
+```
 
 To use the version 1.13 of docker run
 
@@ -330,5 +339,5 @@ DYNMAP=true ESSENTIALS=false ESSENTIALSPROTECT=false PERMISSIONSEX=false CLEARLA
 If you have any problems with or questions about this image, please contact me by submitting a ticket through a [GitHub issue](https://github.com/AshDevFr/docker-spigot/issues)
 
 
-
+Original Thanks kept during fork
 Thanks to [nimmis](https://github.com/nimmis/docker-spigot) & [itzg](https://github.com/itzg/dockerfiles/tree/master/minecraft-server)
